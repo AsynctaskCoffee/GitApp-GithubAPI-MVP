@@ -15,18 +15,18 @@ android {
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField 'boolean', 'IS_DEVELOPMENT', 'true'
-        buildConfigField 'String', 'githubEndPoint', '"https://api.themoviedb.org/"'
+        buildConfigField 'String', 'githubEndPoint', '"https://api.github.com/"'
     }
 
     buildTypes {
         debug {
             debuggable true
             buildConfigField 'boolean', 'IS_DEVELOPMENT', 'true'
-            buildConfigField 'String', 'githubEndPoint', '"https://api.themoviedb.org/"'
+            buildConfigField 'String', 'githubEndPoint', '"https://api.github.com/"'
         }
         release {
             buildConfigField 'boolean', 'IS_DEVELOPMENT', 'false'
-            buildConfigField 'String', 'githubEndPoint', '"https://api.themoviedb.org/"'
+            buildConfigField 'String', 'githubEndPoint', '"https://api.github.com/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
