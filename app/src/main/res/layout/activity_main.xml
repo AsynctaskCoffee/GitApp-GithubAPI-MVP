@@ -4,9 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
     android:background="#f1f1f1"
     app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="96dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgGitLogo"
@@ -22,8 +33,8 @@
     <TextView
         android:id="@+id/textLogo"
         android:layout_width="wrap_content"
-        android:elevation="5dp"
         android:layout_height="wrap_content"
+        android:elevation="5dp"
         android:fontFamily="@font/glora_bold"
         android:gravity="center"
         android:text="GitApp"
@@ -54,23 +65,40 @@
         app:layout_constraintTop_toBottomOf="@+id/imgGitLogo" />
 
 
-    <TextView
+    <LinearLayout
         android:id="@+id/btnFetchRepoDetails"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:elevation="5dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="@drawable/radius_corner_background_dark"
-        android:fontFamily="@font/glora_medium"
+        android:elevation="5dp"
         android:gravity="center"
         android:orientation="horizontal"
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
-        android:text="Fetch User Repositories"
-        android:textColor="@color/white"
-        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtGitUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGitUserName">
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_git_white_logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:fontFamily="@font/glora_medium"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:text="Fetch User Repositories"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
