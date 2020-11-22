@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.asynclabs.githubpersonalapplication">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="com.asynclabs.GitApp"
         android:allowBackup="true"
@@ -10,8 +12,12 @@
         android:roundIcon="@drawable/ic_git_app_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.GithubPersonalApplication">
-        <activity android:name=".ui.detail.DetailActivity"></activity>
-        <activity android:name=".ui.main.MainActivity">
+        <activity
+            android:name=".ui.detail.DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

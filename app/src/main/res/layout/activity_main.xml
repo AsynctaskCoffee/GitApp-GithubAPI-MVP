@@ -10,6 +10,16 @@
     app:layoutDescription="@xml/activity_main_scene"
     tools:context=".ui.main.MainActivity">
 
+    <ImageView
+        android:id="@+id/backPanel"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:alpha="0"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="160dp"
@@ -48,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imgGitLogo" />
 
     <EditText
-        android:id="@+id/txtGitUserName"
+        android:id="@+id/edtGitUserName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="35dp"
@@ -62,6 +72,7 @@
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
         android:singleLine="true"
+        android:textColor="#000000"
         android:textColorHint="#333333"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/imgGitLogo" />
@@ -72,17 +83,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+        android:alpha="1"
         android:background="@drawable/radius_corner_background_dark"
         android:clickable="true"
         android:elevation="5dp"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:gravity="center"
+        android:onClick="fetchData"
         android:orientation="horizontal"
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtGitUserName">
+        app:layout_constraintTop_toBottomOf="@+id/edtGitUserName">
 
 
         <ImageView
@@ -110,6 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
+        android:alpha="1"
         android:fontFamily="@font/glora_medium"
         android:gravity="center"
         android:orientation="horizontal"
@@ -124,9 +138,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRepo"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:alpha="0"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtGitUserName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtGitUserName"
+        tools:listitem="@layout/item_repo_row" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

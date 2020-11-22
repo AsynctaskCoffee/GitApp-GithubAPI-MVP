@@ -22,6 +22,6 @@ class GitApp : Application(), LifecycleObserver {
             .builder()
             .gitAppModule(GitAppModule(this))
             .remoteModule(RemoteModule(this))
-            .localModule(LocalModule(this))
+            .localModule(LocalModule())
             .build()
 }

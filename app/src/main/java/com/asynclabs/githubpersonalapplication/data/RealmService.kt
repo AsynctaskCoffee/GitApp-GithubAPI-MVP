@@ -1,8 +1,9 @@
 package com.asynclabs.githubpersonalapplication.data
 
 import io.realm.Realm
+import javax.inject.Inject
 
-class RealmService(private val mRealm: Realm) {
+open class RealmService @Inject constructor(private val mRealm: Realm) {
     fun closeRealm() {
         mRealm.close()
     }

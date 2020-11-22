@@ -94,6 +94,9 @@ data class RepoResponse(
 	@field:SerializedName("node_id")
 	val nodeId: String? = null,
 
+	@field:SerializedName("language")
+	val language: String? = null,
+
 	@field:SerializedName("forks_count")
 	val forksCount: Int? = null
 ) : Parcelable

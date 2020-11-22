@@ -1,5 +1,6 @@
 package com.asynclabs.githubpersonalapplication.ui.main
 
+import com.asynclabs.githubpersonalapplication.data.remotemodels.RepoResponse
 import com.asynclabs.githubpersonalapplication.ui.base.BaseContract
 
 class MainContract {
@@ -9,7 +10,7 @@ class MainContract {
         fun showProgressBar()
         fun animateSceneToStart()
         fun animateSceneToEnd()
-        fun onGitRepoResultsReady()
+        fun onGitRepoResultsReady(repoList: List<RepoResponse>)
     }
 
     interface Presenter : BaseContract.Presenter<View> {
