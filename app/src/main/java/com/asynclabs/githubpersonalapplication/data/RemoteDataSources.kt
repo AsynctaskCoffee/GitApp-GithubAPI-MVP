@@ -13,6 +13,14 @@ open class RemoteDataSources @Inject constructor(
         repoName
     )
 
+    fun getRepoReadmeDetails(
+        userName: String,
+        repoName: String
+    ) = remoteEndPoints.getRepoReadmeDetails(
+        userName,
+        repoName
+    )
+
     fun getRepoList(
         userName: String
     ) = remoteEndPoints.getRepoList(

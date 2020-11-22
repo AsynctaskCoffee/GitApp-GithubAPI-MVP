@@ -1,6 +1,7 @@
 package com.asynclabs.githubpersonalapplication.ui.main
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.asynclabs.githubpersonalapplication.R
 import com.asynclabs.githubpersonalapplication.data.remotemodels.RepoResponse
 import com.asynclabs.githubpersonalapplication.ui.base.BaseActivity
+import com.asynclabs.githubpersonalapplication.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -62,6 +64,9 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), 
     }
 
     override fun onClick(repoResponse: RepoResponse) {
-//        startActivity()
+        val intent = Intent(this, DetailActivity::class.java)
+        intent.putExtra("repoName", repoResponse.name)
+        intent.putExtra("userName", repoResponse.owner?.login)
+        startActivity(intent)
     }
 }

@@ -10,9 +10,6 @@ import javax.inject.Inject
 
 class MainPresenter @Inject constructor(private val dataRepository: DataRepository) :
     BasePresenter<MainContract.View>(), MainContract.Presenter {
-    override fun onItemClicked(item: Any) {
-
-    }
 
     fun fetchRepositoryDetails(userName: String) {
         disposables?.addAll(
@@ -41,5 +38,8 @@ class MainPresenter @Inject constructor(private val dataRepository: DataReposito
 
                 })
         )
+    }
+
+    override fun onStarClicked(item: RepoResponse) {
     }
 }

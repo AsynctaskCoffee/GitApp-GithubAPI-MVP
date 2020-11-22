@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="#f1f1f1"
+    android:background="#fafbfc"
     app:layoutDescription="@xml/activity_main_end_scene"
     tools:context=".ui.main.MainActivity">
 

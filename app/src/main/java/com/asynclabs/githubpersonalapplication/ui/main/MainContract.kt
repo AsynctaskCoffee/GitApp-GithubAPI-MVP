@@ -14,6 +14,6 @@ class MainContract {
     }
 
     interface Presenter : BaseContract.Presenter<View> {
-        fun onItemClicked(item: Any)
+        fun onStarClicked(item: RepoResponse)
     }
 }

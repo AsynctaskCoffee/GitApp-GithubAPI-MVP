@@ -17,6 +17,14 @@ open class DataRepository @Inject constructor(
         repoName
     )
 
+    fun getRepoReadmeDetails(
+        userName: String,
+        repoName: String
+    ) = remoteDataSources.getRepoReadmeDetails(
+        userName,
+        repoName
+    )
+
     fun getRepoList(
         userName: String
     ) = remoteDataSources.getRepoList(
