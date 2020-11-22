@@ -20,7 +20,9 @@
 
 
     <TextView
+        android:id="@+id/textLogo"
         android:layout_width="wrap_content"
+        android:elevation="5dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/glora_bold"
         android:gravity="center"
@@ -40,15 +42,35 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="35dp"
         android:background="@drawable/radius_corner_background"
-        android:elevation="1dp"
+        android:elevation="5dp"
         android:fontFamily="@font/glora_medium"
         android:gravity="center"
-        android:hint="Enter UserName"
+        android:hint="Enter Github Username"
         android:paddingStart="25dp"
         android:paddingEnd="25dp"
         android:singleLine="true"
         android:textColorHint="#333333"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@+id/imgGitLogo" />
+
+
+    <TextView
+        android:id="@+id/btnFetchRepoDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:elevation="5dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/radius_corner_background_dark"
+        android:fontFamily="@font/glora_medium"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="Fetch User Repositories"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGitUserName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
