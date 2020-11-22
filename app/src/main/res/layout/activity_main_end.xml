@@ -2,12 +2,13 @@
 <androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
     android:background="#f1f1f1"
-    tools:context=".MainActivity"
-    app:layoutDescription="@xml/activity_main_end_scene">
+    app:layoutDescription="@xml/activity_main_end_scene"
+    tools:context=".ui.main.MainActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -123,9 +124,9 @@
         android:id="@+id/recyclerViewRepo"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="65dp"
         android:alpha="1"
+        android:paddingTop="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>

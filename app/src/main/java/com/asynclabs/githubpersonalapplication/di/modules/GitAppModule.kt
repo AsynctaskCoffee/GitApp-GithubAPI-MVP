@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import androidx.preference.PreferenceManager
 import com.asynclabs.githubpersonalapplication.config.GitAppInfo
 import com.asynclabs.githubpersonalapplication.data.DataRepository
+import com.asynclabs.githubpersonalapplication.data.RealmService
 import com.asynclabs.githubpersonalapplication.data.RemoteDataSources
 import com.asynclabs.githubpersonalapplication.di.scope.ApplicationScope
 import com.asynclabs.githubpersonalapplication.utils.GitAppPrefManager
@@ -39,10 +40,12 @@ class GitAppModule(private val application: Application) {
     @Provides
     fun providesDataRepository(
         remoteDataSources: RemoteDataSources,
-        gitAppPrefManager: GitAppPrefManager
+        gitAppPrefManager: GitAppPrefManager,
+        realmService: RealmService
     ) = DataRepository(
         remoteDataSources,
-        gitAppPrefManager
+        gitAppPrefManager,
+        realmService
     )
 
     @ApplicationScope

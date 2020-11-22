@@ -4,11 +4,5 @@
     <Transition
         motion:constraintSetEnd="@layout/activity_main_end"
         motion:constraintSetStart="@layout/activity_main"
-        motion:duration="1000">
-        <OnSwipe
-            motion:dragDirection="dragRight"
-            motion:touchAnchorId="@+id/button"
-            motion:touchAnchorSide="right" />
-    </Transition>
-
+        motion:duration="1000"/>
 </MotionScene>
