@@ -4,15 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    app:layoutDescription="@xml/activity_main_scene"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imgGitLogo"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/ic_git_logo_secondary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fontFamily="@font/glora_bold"
+        android:gravity="center"
+        android:text="GitApp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgGitLogo" />
+
+    <EditText
+        android:id="@+id/txtGitUserName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="35dp"
+        android:background="@drawable/radius_corner_background"
+        android:elevation="1dp"
+        android:fontFamily="@font/glora_medium"
+        android:gravity="center"
+        android:hint="Enter UserName"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:singleLine="true"
+        android:textColorHint="#333333"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/imgGitLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
