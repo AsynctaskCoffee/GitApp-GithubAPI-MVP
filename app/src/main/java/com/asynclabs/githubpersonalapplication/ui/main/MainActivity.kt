@@ -1,13 +1,8 @@
 package com.asynclabs.githubpersonalapplication.ui.main
 
-import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.asynclabs.githubpersonalapplication.R
 import com.asynclabs.githubpersonalapplication.data.remotemodels.RepoResponse
 import com.asynclabs.githubpersonalapplication.ui.base.BaseActivity
@@ -40,14 +35,17 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), 
     }
 
     override fun animateSceneToStart() {
+        hideProgressBar()
         motionLayout?.transitionToStart()
     }
 
     override fun animateSceneToEnd() {
+        hideProgressBar()
         motionLayout?.transitionToEnd()
     }
 
     override fun onGitRepoResultsReady(repoList: List<RepoResponse>) {
+        edtGitUserName.isEnabled = false
         recyclerViewRepo.adapter = MainAdapter(repoList, this)
     }
 

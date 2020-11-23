@@ -56,6 +56,13 @@ class DetailPresenter @Inject constructor(private val dataRepository: DataReposi
     }
 
     override fun onStarClicked(item: RepoResponse) {
-
+        if (item.id != null)
+            if (dataRepository.isFav(item.id)) {
+                dataRepository.removeFav(item.id)
+                getView()?.showToast("Repo deleted from favList")
+            } else {
+                item.name?.let { dataRepository.addFav(item.id, it) }
+                getView()?.showToast("Repo added into favList")
+            }
     }
 }

@@ -11,7 +11,7 @@
         android:layout_margin="10dp"
         app:cardBackgroundColor="#fafbfc"
         app:cardCornerRadius="10dp"
-        app:cardElevation="1dp">
+        app:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +52,6 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:ellipsize="end"
-                            android:fontFamily="@font/glora_bold"
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:singleLine="false"
@@ -73,7 +72,6 @@
                         android:layout_marginBottom="10dp"
                         android:ellipsize="end"
                         android:textColor="#333333"
-                        android:fontFamily="@font/glora_regular"
                         android:gravity="center_vertical"
                         android:maxLines="2"
                         android:singleLine="false"
@@ -105,7 +103,6 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="5dp"
                             android:textColor="#333333"
-                            android:fontFamily="@font/glora_regular"
                             android:includeFontPadding="false"
                             android:textSize="13sp"
                             tools:text="Java" />
@@ -125,7 +122,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="2dp"
-                            android:fontFamily="@font/glora_regular"
                             android:includeFontPadding="false"
                             android:textColor="#333333"
                             android:textSize="12sp"
@@ -147,7 +143,6 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="2dp"
-                            android:fontFamily="@font/glora_regular"
                             android:includeFontPadding="false"
                             android:textSize="12sp"
                             tools:text="13" />
@@ -187,7 +182,6 @@
                         android:id="@+id/txtOwner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/glora_medium"
                         android:includeFontPadding="false"
                         android:singleLine="true"
                         android:textColor="@color/black"
@@ -200,7 +194,7 @@
                         android:textColor="#333333"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:fontFamily="@font/glora_regular"
+                        android:includeFontPadding="false"
                         android:singleLine="true"
                         android:textSize="10sp"
                         tools:text="Created 18 hours ago" />

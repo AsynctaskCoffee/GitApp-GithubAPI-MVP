@@ -30,4 +30,8 @@ open class DataRepository @Inject constructor(
     ) = remoteDataSources.getRepoList(
         userName
     )
+
+    fun addFav(id: Int, repoName: String) = realmService.addFav(repoName, id)
+    fun removeFav(id: Int) = realmService.removeFav(id)
+    fun isFav(id: Int) = realmService.isFav(id)
 }

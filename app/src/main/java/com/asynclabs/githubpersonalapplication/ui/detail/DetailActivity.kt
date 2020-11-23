@@ -3,6 +3,7 @@ package com.asynclabs.githubpersonalapplication.ui.detail
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import br.tiagohm.markdownview.css.styles.Github
 import com.asynclabs.githubpersonalapplication.R
@@ -40,9 +41,11 @@ class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presente
     override fun getLayoutResId() = R.layout.activity_detail
 
     override fun hideProgressBar() {
+        progressBar.visibility = View.GONE
     }
 
     override fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
     }
 
     @SuppressLint("SetTextI18n")

@@ -1,6 +1,8 @@
 package com.asynclabs.githubpersonalapplication.data
 
+import com.asynclabs.githubpersonalapplication.data.localmodels.FavRepoModel
 import io.realm.Realm
+import io.realm.RealmResults
 import javax.inject.Inject
 
 open class RealmService @Inject constructor(private val mRealm: Realm) {
@@ -8,25 +10,23 @@ open class RealmService @Inject constructor(private val mRealm: Realm) {
         mRealm.close()
     }
 
-//    val getExample: RealmResults<Any>
-//        get() = mRealm.where(Any::class.java).findAll()
+    fun removeFav(itemId: Int) {
+        val x: RealmResults<FavRepoModel> =
+            mRealm.where(FavRepoModel::class.java).equalTo("id", itemId).findAll()
+        x.deleteAllFromRealm()
+    }
 
-//    fun addExample(
-//        title: String?, isbn: String?,
-//        onTransactionCallback: OnTransactionCallback
-//    ) {
-//        mRealm.executeTransactionAsync({ realm ->
-//            val any: Any = Any()
-//            Any.setId(realm.where(Any::class.java).findAll().size)
-//            Any.setTitle(title)
-//            Any.setIsbn(isbn)
-//            realm.copyToRealm(Any)
-//        }, { onTransactionCallback.onRealmSuccess() }
-//        ) { error -> onTransactionCallback.onRealmError(error) }
-//    }
+    fun isFav(itemId: Int) =
+        mRealm.where(FavRepoModel::class.java).equalTo("id", itemId).findFirst() != null
 
-    interface OnTransactionCallback {
-        fun onRealmSuccess()
-        fun onRealmError(t: Throwable?)
+    fun addFav(
+        name: String, id: Int,
+    ) {
+        mRealm.executeTransactionAsync { realm ->
+            val favRepoModel = FavRepoModel()
+            favRepoModel.id = id
+            favRepoModel.name = name
+            realm.copyToRealm(favRepoModel)
+        }
     }
 }
