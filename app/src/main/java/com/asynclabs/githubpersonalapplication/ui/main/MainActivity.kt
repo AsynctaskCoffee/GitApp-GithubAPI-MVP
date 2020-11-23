@@ -64,8 +64,8 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), 
     }
 
 
-    override fun onClick(repoResponse: RepoResponse, observedPosition: Int) {
-        this.observedPosition = observedPosition
+    override fun onClick(repoResponse: RepoResponse, position: Int) {
+        this.observedPosition = position
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("repoName", repoResponse.name)
         intent.putExtra("userName", repoResponse.owner?.login)
