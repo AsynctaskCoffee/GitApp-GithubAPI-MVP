@@ -10,7 +10,10 @@ import com.asynclabs.githubpersonalapplication.R
 import com.asynclabs.githubpersonalapplication.data.remotemodels.ReadmeResponse
 import com.asynclabs.githubpersonalapplication.data.remotemodels.RepoResponse
 import com.asynclabs.githubpersonalapplication.ui.base.BaseActivity
+import com.like.LikeButton
+import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.coroutines.delay
 import javax.inject.Inject
 
 class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presenter>(),
@@ -18,6 +21,7 @@ class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presente
 
     var userName = ""
     var repoName = ""
+    var repoResponse: RepoResponse? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +54,7 @@ class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presente
 
     @SuppressLint("SetTextI18n")
     override fun onGitRepoResultReady(repoResponse: RepoResponse) {
+        this.repoResponse = repoResponse
         txtGitUserName?.text = (repoResponse.owner?.login ?: "") + " / "
         txtRepoName?.text = repoResponse.name ?: ""
         txtRepoDesc?.text = repoResponse.description ?: "No description provided yet"
@@ -59,6 +64,17 @@ class DetailActivity : BaseActivity<DetailContract.View, DetailContract.Presente
         txtStarCount?.text = (repoResponse.stargazersCount ?: "0").toString() + " stars"
         txtStarCountAct?.text = (repoResponse.stargazersCount ?: "0").toString()
         txtIssuesCount?.text = "Issues " + (repoResponse.openIssuesCount ?: "0").toString()
+        starButton?.isLiked = repoResponse.isFav()
+        starButton?.setOnLikeListener(object : OnLikeListener {
+            override fun liked(likeButton: LikeButton?) {
+                detailsPresenter.onStarClicked(repoResponse)
+            }
+
+            override fun unLiked(likeButton: LikeButton?) {
+                detailsPresenter.onStarClicked(repoResponse)
+            }
+
+        })
     }
 
     override fun onGitReadmeResultReady(readmeResponse: ReadmeResponse) {

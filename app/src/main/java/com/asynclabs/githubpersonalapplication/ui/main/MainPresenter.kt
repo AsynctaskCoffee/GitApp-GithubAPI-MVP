@@ -35,11 +35,18 @@ class MainPresenter @Inject constructor(private val dataRepository: DataReposito
                         getView()?.showToast(e.toString())
                         getView()?.hideProgressBar()
                     }
-
                 })
         )
     }
 
     override fun onStarClicked(item: RepoResponse) {
+        if (item.id != null)
+            if (dataRepository.isFav(item.id.toString())) {
+                dataRepository.removeFav(item.id.toString())
+                getView()?.showToast("Repo deleted from favList")
+            } else {
+                item.name?.let { dataRepository.addFav(item.id.toString(), it) }
+                getView()?.showToast("Repo added into favList")
+            }
     }
 }

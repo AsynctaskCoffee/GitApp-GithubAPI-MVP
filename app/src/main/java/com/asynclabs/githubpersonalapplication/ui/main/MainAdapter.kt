@@ -12,6 +12,8 @@ import com.asynclabs.githubpersonalapplication.R
 import com.asynclabs.githubpersonalapplication.data.remotemodels.RepoResponse
 import com.asynclabs.githubpersonalapplication.utils.SimpleTimeUtils
 import com.bumptech.glide.Glide
+import com.like.LikeButton
+import com.like.OnLikeListener
 import kotlinx.android.synthetic.main.item_repo_row.view.*
 
 class MainAdapter(
@@ -21,12 +23,13 @@ class MainAdapter(
     RecyclerView.Adapter<MainAdapter.RepoViewHolder>() {
 
     interface ClickListener {
-        fun onClick(repoResponse: RepoResponse)
+        fun onClick(repoResponse: RepoResponse, position: Int)
+        fun onStarClick(repoResponse: RepoResponse)
     }
 
-    class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         @SuppressLint("SetTextI18n")
-        fun bindItems(item: RepoResponse) {
+        fun bindItems(item: RepoResponse, position: Int) {
             Glide.with(itemView.imgUser.context)
                 .load(item.owner?.avatarUrl ?: "err")
                 .error(R.drawable.ic_git_logo_secondary)
@@ -36,6 +39,17 @@ class MainAdapter(
             itemView.txRepoDesc.text = item.description ?: "No description provided yet"
             itemView.txtLanguageName.text = item.language ?: "Unknown"
             itemView.txtOwner.text = "Created by " + (item.owner?.login ?: "Unknown")
+
+            itemView.starButton.isLiked = item.isFav()
+            itemView.starButton.setOnLikeListener(object : OnLikeListener {
+                override fun liked(likeButton: LikeButton?) {
+                    clickListener.onStarClick(item)
+                }
+
+                override fun unLiked(likeButton: LikeButton?) {
+                    clickListener.onStarClick(item)
+                }
+            })
 
             itemView.txtDate.text = item.createdAt?.let {
                 SimpleTimeUtils().calculateTimeDifference(
@@ -75,8 +89,8 @@ class MainAdapter(
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
-        holder.bindItems(repoList[position])
-        holder.itemView.setOnClickListener { clickListener.onClick(repoList[position]) }
+        holder.bindItems(repoList[position], position)
+        holder.itemView.setOnClickListener { clickListener.onClick(repoList[position], position) }
     }
 
     override fun getItemId(position: Int): Long {

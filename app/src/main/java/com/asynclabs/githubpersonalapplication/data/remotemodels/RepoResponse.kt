@@ -4,13 +4,12 @@ import android.os.Parcelable
 import com.asynclabs.githubpersonalapplication.data.RealmService
 import com.google.gson.annotations.SerializedName
 import io.realm.Realm
+import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 import javax.inject.Inject
 
 @Parcelize
 data class RepoResponse(
-
-    var isFav: Boolean? = false,
 
     @field:SerializedName("private")
     val jsonMemberPrivate: Boolean? = null,
@@ -105,9 +104,9 @@ data class RepoResponse(
     @field:SerializedName("forks_count")
     val forksCount: Int? = null
 ) : Parcelable {
-    init {
-        isFav = id?.let { RealmService(Realm.getDefaultInstance()).isFav(it) }
-    }
+
+    fun isFav() = RealmService(Realm.getDefaultInstance()).isFav(id.toString())
+
 }
 
 @Parcelize

@@ -10,19 +10,22 @@ open class RealmService @Inject constructor(private val mRealm: Realm) {
         mRealm.close()
     }
 
-    fun removeFav(itemId: Int) {
-        val x: RealmResults<FavRepoModel> =
-            mRealm.where(FavRepoModel::class.java).equalTo("id", itemId).findAll()
-        x.deleteAllFromRealm()
+    fun removeFav(itemId: String) {
+        mRealm.executeTransaction {
+            val x: RealmResults<FavRepoModel> =
+                it.where(FavRepoModel::class.java).equalTo("id", itemId).findAll()
+            x.deleteAllFromRealm()
+        }
+
     }
 
-    fun isFav(itemId: Int) =
-        mRealm.where(FavRepoModel::class.java).equalTo("id", itemId).findFirst() != null
+    fun isFav(itemId: String) =
+        mRealm.where(FavRepoModel::class.java).equalTo("id", itemId).findAll().size > 0
 
     fun addFav(
-        name: String, id: Int,
+        name: String, id: String,
     ) {
-        mRealm.executeTransactionAsync { realm ->
+        mRealm.executeTransaction { realm ->
             val favRepoModel = FavRepoModel()
             favRepoModel.id = id
             favRepoModel.name = name

@@ -13,6 +13,8 @@ import javax.inject.Inject
 class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), MainContract.View,
     MainAdapter.ClickListener {
 
+    var observedPosition = -1
+
     @Inject
     lateinit var mainPresenter: MainPresenter
 
@@ -61,10 +63,23 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), 
         else showToast("UserName cannot be empty")
     }
 
-    override fun onClick(repoResponse: RepoResponse) {
+
+    override fun onClick(repoResponse: RepoResponse, observedPosition: Int) {
+        this.observedPosition = observedPosition
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("repoName", repoResponse.name)
         intent.putExtra("userName", repoResponse.owner?.login)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (observedPosition != -1)
+            recyclerViewRepo?.adapter?.notifyItemChanged(observedPosition)
+                .also { observedPosition = -1 }
+    }
+
+    override fun onStarClick(repoResponse: RepoResponse) {
+        mainPresenter.onStarClicked(repoResponse)
     }
 }

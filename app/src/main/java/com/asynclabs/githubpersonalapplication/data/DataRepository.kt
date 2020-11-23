@@ -31,7 +31,7 @@ open class DataRepository @Inject constructor(
         userName
     )
 
-    fun addFav(id: Int, repoName: String) = realmService.addFav(repoName, id)
-    fun removeFav(id: Int) = realmService.removeFav(id)
-    fun isFav(id: Int) = realmService.isFav(id)
+    fun addFav(id: String, repoName: String) = realmService.addFav(repoName, id)
+    fun removeFav(id: String) = realmService.removeFav(id)
+    fun isFav(id: String) = realmService.isFav(id)
 }
